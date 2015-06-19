@@ -15,16 +15,15 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-sub insertion_sort {
-    my $a = shift;
-    for my $i (1..$#$a) {
-        my ($j, $key) = ($i - 1, $a->[$i]);
-        $a->[$j-- + 1] = $a->[$j] while $j >= 0 && $a->[$j] > $key;
-        $a->[$j + 1] = $key;
+sub greedy_activity_selector {
+    my ($s, $f) = @_;
+    my ($i, @a) = (1, ("a0"));
+    for my $m (1..$#$s) {
+        if ($s->[$m] >= $f->[$i]) {
+            push @a, "a" . $m;
+            $i = $m;
+        }
     }
+    @a;
 }
-
-# Loop invariant: at the start of each iteration of the for loop, the subarray
-# a[0..i - 1] consists of the elements originally in a[0..i - 1], but in sorted
-# order.
 

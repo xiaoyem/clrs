@@ -15,16 +15,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-sub insertion_sort {
-    my $a = shift;
-    for my $i (1..$#$a) {
-        my ($j, $key) = ($i - 1, $a->[$i]);
-        $a->[$j-- + 1] = $a->[$j] while $j >= 0 && $a->[$j] > $key;
-        $a->[$j + 1] = $key;
-    }
+sub recursive_activity_selector {
+    my ($s, $f, $i, $j) = @_;
+    my $m = $i + 1;
+    $m += 1 while $m < $j && $s->[$m] < $f->[$i];
+    $m < $j ? ("a" . $m, recursive_activity_selector($s, $f, $m, $j)) : undef;
 }
-
-# Loop invariant: at the start of each iteration of the for loop, the subarray
-# a[0..i - 1] consists of the elements originally in a[0..i - 1], but in sorted
-# order.
 

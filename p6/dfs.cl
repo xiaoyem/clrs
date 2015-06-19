@@ -15,18 +15,33 @@
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;
 
-(defun insertion-sort (a)
-  (let ((n (length a)))
-    (do ((i 1 (+ i 1)))
-        ((>= i n))
-      (let ((j (- i 1))
-            (key (svref a i)))
-        (do ()
-            ((or (< j 0) (<= (svref a j) key)) (setf (svref a (+ j 1)) key))
-          (setf (svref a (+ j 1)) (svref a j))
-          (decf j))))))
+(defstruct (vertex (:print-function print-vertex))
+  pi
+  d
+  f
+  color
+  alist)
 
-; Loop invariant: at the start of each iteration of the for loop, the subarray
-; a[0..i - 1] consists of the elements originally in a[0..i - 1], but in sorted
-; order.
+(defvar *time* nil)
+
+(defun print-vertex (vertex stream depth)
+  (declare (ignore depth))
+  (format stream "#<VERTEX ~A/~A>" (vertex-d vertex) (vertex-f vertex)))
+
+(defun dfs-visit (u)
+  (setf (vertex-d u) (incf *time*))
+  (setf (vertex-color u) #\G)
+  (dolist (v (vertex-alist u))
+    (when (char= (vertex-color v) #\W)
+      (setf (vertex-pi v) u)
+      (dfs-visit v)))
+  (setf (vertex-f u) (incf *time*))
+  (setf (vertex-color u) #\B))
+
+(defun dfs (g)
+  (dolist (u g (setf *time* 0))
+    (setf (vertex-color u) #\W))
+  (dolist (u g)
+    (when (char= (vertex-color u) #\W)
+      (dfs-visit u))))
 

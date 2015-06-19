@@ -15,16 +15,43 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-sub insertion_sort {
-    my $a = shift;
-    for my $i (1..$#$a) {
-        my ($j, $key) = ($i - 1, $a->[$i]);
-        $a->[$j-- + 1] = $a->[$j] while $j >= 0 && $a->[$j] > $key;
-        $a->[$j + 1] = $key;
+use Class::Struct;
+
+struct vertex => {
+    pi        => '$',
+    d         => '$',
+    f         => '$',
+    color     => '$',
+    alist     => '@'
+};
+
+my $time;
+my @list;
+
+sub dfs_visit {
+    my $u = shift;
+    $u->d(++$time);
+    $u->color('G');
+    for my $v (@{$u->alist}) {
+        if ($v->color eq 'W') {
+            $v->pi($u);
+            dfs_visit($v);
+        }
     }
+    $u->f(++$time);
+    $u->color('B');
+    unshift @list, $u;
 }
 
-# Loop invariant: at the start of each iteration of the for loop, the subarray
-# a[0..i - 1] consists of the elements originally in a[0..i - 1], but in sorted
-# order.
+sub topological_sort {
+    my $g = shift;
+    for my $u (@$g) {
+        $u->color('W');
+    }
+    $time = 0;
+    undef @list;
+    for my $u (@$g) {
+        dfs_visit($u) if $u->color eq 'W';
+    }
+}
 

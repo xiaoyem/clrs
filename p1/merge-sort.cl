@@ -45,7 +45,7 @@
       (merge2 a p q r))))
 
 ; Loop invariant: at the start of each iteration of the for loop, the subarray
-; a[p..k - 1] contains the k - p smallest elements of a1[1..n1 + 1] and
-; a2[1..n2 + 1], in sorted order. Moreover, a1[i] and a2[j] are the smallest
+; a[p..k - 1] contains the k - p smallest elements of a1[0..n1 - 1] and
+; a2[0..n2 - 1], in sorted order. Moreover, a1[i] and a2[j] are the smallest
 ; elements of their arrays that have not been copied back into a.
 

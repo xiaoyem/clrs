@@ -15,18 +15,12 @@
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;
 
-(defun insertion-sort (a)
-  (let ((n (length a)))
-    (do ((i 1 (+ i 1)))
-        ((>= i n))
-      (let ((j (- i 1))
-            (key (svref a i)))
-        (do ()
-            ((or (< j 0) (<= (svref a j) key)) (setf (svref a (+ j 1)) key))
-          (setf (svref a (+ j 1)) (svref a j))
-          (decf j))))))
-
-; Loop invariant: at the start of each iteration of the for loop, the subarray
-; a[0..i - 1] consists of the elements originally in a[0..i - 1], but in sorted
-; order.
+(defun recursive-activity-selector (s f i j)
+  (let ((m (+ i 1)))
+    (do ()
+        ((or (>= m j) (>= (svref s m) (svref f i))))
+      (incf m))
+    (if (< m j)
+        (cons (format nil "a~A" m) (recursive-activity-selector s f m j))
+        nil)))
 
