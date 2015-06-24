@@ -15,14 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-sub insertion_sort {
-    my $a = shift;
-    for my $i (1..$#$a) {
-        my ($key, $j) = ($a->[$i], $i - 1);
-        $a->[$j-- + 1] = $a->[$j] while $j >= 0 && $a->[$j] > $key;
-        $a->[$j + 1] = $key;
-    }
-}
+do "p1/insertion_sort.pl";
 
 sub bucket_sort {
     my $a = shift;

@@ -15,25 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-sub partition {
-    my ($a, $p, $r) = @_;
-    my $i = $p - 1;
-    for my $j ($p..$r - 1) {
-        if ($a->[$j] <= $a->[$r]) {
-            ++$i;
-            @$a[$i, $j] = @$a[$j, $i];
-        }
-    }
-    @$a[$i + 1, $r] = @$a[$r, $i + 1];
-    $i + 1;
-}
-
-sub randomized_partition {
-    my ($a, $p, $r) = @_;
-    my $i = int(rand($r - $p + 1)) + $p;
-    @$a[$r, $i] = @$a[$i, $r];
-    partition($a, $p, $r);
-}
+do "p2/quicksort.pl";
 
 sub randomized_select {
     my ($a, $p, $r, $i) = @_;
