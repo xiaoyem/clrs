@@ -15,9 +15,9 @@
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;
 
-(defun randomize-in-place (a)
-  (let ((n (length a)))
-    (dotimes (i n)
-      (rotatef (aref a i)
-               (aref a (+ (random (- n i) (make-random-state t)) i))))))
+(load "p2/bucket-sort.cl")
+
+(let ((a #(.78 .17 .39 .26 .72 .94 .21 .12 .23 .68)))
+  (bucket-sort a)
+  (format t "~A~%" a))
 

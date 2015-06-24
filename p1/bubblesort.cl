@@ -20,6 +20,6 @@
     (dotimes (i n)
       (do ((j (- n 1) (- j 1)))
           ((<= j i))
-        (when (< (svref a j) (svref a (- j 1)))
-          (rotatef (svref a j) (svref a (- j 1))))))))
+        (when (< (aref a j) (aref a (- j 1)))
+          (rotatef (aref a j) (aref a (- j 1))))))))
 

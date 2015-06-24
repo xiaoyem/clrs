@@ -15,9 +15,9 @@
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;
 
-(defun randomize-in-place (a)
-  (let ((n (length a)))
-    (dotimes (i n)
-      (rotatef (aref a i)
-               (aref a (+ (random (- n i) (make-random-state t)) i))))))
+(load "p2/heapsort.cl")
+
+(let ((a (make-array 10 :adjustable t :fill-pointer t :initial-contents '(4 1 3 2 16 9 10 14 8 7))))
+  (heapsort a)
+  (format t "~A~%" a))
 

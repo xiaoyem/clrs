@@ -15,9 +15,10 @@
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;
 
-(defun randomize-in-place (a)
-  (let ((n (length a)))
-    (dotimes (i n)
-      (rotatef (aref a i)
-               (aref a (+ (random (- n i) (make-random-state t)) i))))))
+(load "p2/counting-sort.cl")
+
+(let* ((a #(2 5 3 0 2 3 0 3))
+       (b (make-array (length a))))
+  (counting-sort a b 5)
+  (format t "~A~%" b))
 

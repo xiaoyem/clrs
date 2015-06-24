@@ -22,7 +22,7 @@
     (do ((i (- d 1) (- i 1)))
         ((< i 0))
       (dotimes (j (length a))
-        (setf (gethash (svref a j) h)
-              (digit-char-p (char (to-string (svref a j)) i))))
+        (setf (gethash (aref a j) h)
+              (digit-char-p (char (to-string (aref a j)) i))))
       (stable-sort a #'(lambda (x y) (< (gethash x h) (gethash y h)))))))
 

@@ -20,10 +20,10 @@
     (do ((i 1 (+ i 1)))
         ((>= i n))
       (let ((j (- i 1))
-            (key (svref a i)))
+            (key (aref a i)))
         (do ()
-            ((or (< j 0) (<= (svref a j) key)) (setf (svref a (+ j 1)) key))
-          (setf (svref a (+ j 1)) (svref a j))
+            ((or (< j 0) (<= (aref a j) key)) (setf (aref a (+ j 1)) key))
+          (setf (aref a (+ j 1)) (aref a j))
           (decf j))))))
 
 ; Loop invariant: at the start of each iteration of the for loop, the subarray

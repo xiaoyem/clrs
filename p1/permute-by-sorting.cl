@@ -24,9 +24,9 @@
         (do ()
             ((null (gethash p h)) (setf (gethash p h) t))
           (setf p (+ (random (expt n 3) (make-random-state t)) 1)))
-        (setf (svref b i) (cons p (svref a i)))))
+        (setf (aref b i) (cons p (aref a i)))))
     (sort b #'(lambda (x y) (< (car x) (car y))))
     (dotimes (i n)
-      (setf (svref b i) (cdr (svref b i))))
+      (setf (aref b i) (cdr (aref b i))))
     b))
 

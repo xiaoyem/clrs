@@ -15,9 +15,9 @@
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;
 
-(defun randomize-in-place (a)
-  (let ((n (length a)))
-    (dotimes (i n)
-      (rotatef (aref a i)
-               (aref a (+ (random (- n i) (make-random-state t)) i))))))
+(load "p2/quicksort.cl")
+
+(let ((a #(2 8 7 1 3 5 6 4)))
+  (quicksort a 0 (- (length a) 1))
+  (format t "~A~%" a))
 

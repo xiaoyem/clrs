@@ -15,9 +15,9 @@
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;
 
-(defun randomize-in-place (a)
-  (let ((n (length a)))
-    (dotimes (i n)
-      (rotatef (aref a i)
-               (aref a (+ (random (- n i) (make-random-state t)) i))))))
+(load "p2/radix-sort.cl")
+
+(let ((a #(329 457 657 839 436 720 355)))
+  (radix-sort a 3)
+  (format t "~A~%" a))
 

@@ -15,26 +15,15 @@
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;
 
-(defun partition (a p r)
-  (let ((i (- p 1)))
-    (do ((j p (+ j 1)))
-        ((>= j r) (rotatef (svref a (+ i 1)) (svref a r)))
-      (when (<= (svref a j) (svref a r))
-        (incf i)
-        (rotatef (svref a i) (svref a j))))
-    (+ i 1)))
-
-(defun randomized-partition (a p r)
-  (rotatef (svref a r) (svref a (+ (random (+ (- r p) 1)) p)))
-  (partition a p r))
+(load "p2/quicksort.cl")
 
 (defun randomized-select (a p r i)
   (when (= p r)
-    (return-from randomized-select (svref a p)))
+    (return-from randomized-select (aref a p)))
   (let* ((q (randomized-partition a p r))
          (k (+ (- q p) 1)))
     (if (= i k)
-        (svref a q)
+        (aref a q)
         (if (< i k)
             (randomized-select a p (- q 1) i)
             (randomized-select a (+ q 1) r (- i k))))))

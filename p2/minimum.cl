@@ -17,9 +17,9 @@
 
 (defun minimum (a)
   (let ((n (length a))
-        (x (svref a 0)))
+        (x (aref a 0)))
     (do ((i 1 (+ i 1)))
         ((>= i n) x)
-      (when (> x (svref a i))
-        (setf x (svref a i))))))
+      (when (> x (aref a i))
+        (setf x (aref a i))))))
 
