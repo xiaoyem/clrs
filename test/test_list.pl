@@ -15,37 +15,35 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-use Class::Struct;
+do "p3/list.pl";
 
-struct element => {
-    prev       => '$',
-    key        => '$',
-    next       => '$'
-};
-
-struct dlist   => {
-    head       => '$'
-};
-
-sub list_search {
-    my ($l, $k) = @_;
-    my $x = $l->head;
-    $x = $x->next while defined $x && $x->key != $k;
-    $x;
+my $l = new dlist;
+my $a = new element;
+my $b = new element;
+my $c = new element;
+my $d = new element;
+my $e = new element;
+$a->key(1);
+$b->key(4);
+$c->key(16);
+$d->key(9);
+$e->key(25);
+list_insert($l, $a);
+list_insert($l, $b);
+list_insert($l, $c);
+list_insert($l, $d);
+for (my $x = $l->head; defined $x; $x = $x->next) {
+    print $x->key;
 }
-
-sub list_insert {
-    my ($l, $x) = @_;
-    $x->next($l->head);
-    $l->head->prev($x) if defined $l->head;
-    $l->head($x);
+print "\n";
+list_insert($l, $e);
+for (my $x = $l->head; defined $x; $x = $x->next) {
+    print $x->key;
 }
-
-sub list_delete {
-    my ($l, $x) = @_;
-    defined $x->prev ? $x->prev->next($x->next) : $l->head($x->next);
-    $x->next->prev($x->prev) if defined $x->next;
-    $x->prev(undef);
-    $x->next(undef);
+print "\n";
+list_delete($l, $b);
+for (my $x = $l->head; defined $x; $x = $x->next) {
+    print $x->key;
 }
+print "\n";
 
