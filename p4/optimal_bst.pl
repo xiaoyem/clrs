@@ -37,6 +37,6 @@ sub optimal_bst {
             }
         }
     }
-    \(@e, @r);
+    (@e, @r);
 }
 

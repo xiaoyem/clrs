@@ -89,10 +89,9 @@
           (setf x (node-right x))))
     (if (null y)
         (setf (bst-root b) z)
-        (progn
-          (if (< (node-key z) (node-key y))
-              (setf (node-left y) z)
-              (setf (node-right y) z))))))
+        (if (< (node-key z) (node-key y))
+            (setf (node-left y) z)
+            (setf (node-right y) z))))))
 
 (defun tree-delete (b z)
   (let ((x) (y))
