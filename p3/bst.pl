@@ -82,23 +82,49 @@ sub tree_insert {
         $y->right($z));
 }
 
+#sub tree_delete {
+#    my ($b, $z) = @_;
+#    my ($x, $y);
+#    !(defined $z->left) || !(defined $z->right) ? $y = $z :
+#        ($y = tree_successor($z));
+#    defined $y->left ? $x = $y->left : ($x = $y->right);
+#    $x->p($y->p) if defined $x;
+#    !(defined $y->p) ? $b->root($x) : ($y == $y->p->left ? $y->p->left($x) :
+#        $y->p->right($x));
+#    if ($y != $z) {
+#        my $tmp = $z->key;
+#        $z->key($y->key);
+#        $y->key($tmp);
+#    }
+#    $y->p(undef);
+#    $y->left(undef);
+#    $y->right(undef);
+#    $y;
+#}
+
+sub transplant {
+    my ($b, $u, $v) = @_;
+    !(defined $u->p) ? $b->root($v) : ($u == $u->p->left ? $u->p->left($v) :
+        $u->p->right($v));
+    $v->p($u->p) if defined $v;
+}
+
 sub tree_delete {
     my ($b, $z) = @_;
-    my ($x, $y);
-    !(defined $z->left) || !(defined $z->right) ? $y = $z :
-        ($y = tree_successor($z));
-    defined $y->left ? $x = $y->left : ($x = $y->right);
-    $x->p($y->p) if defined $x;
-    !(defined $y->p) ? $b->root($x) : ($y == $y->p->left ? $y->p->left($x) :
-        $y->p->right($x));
-    if ($y != $z) {
-        my $tmp = $z->key;
-        $z->key($y->key);
-        $y->key($tmp);
+    if (!(defined $z->left)) {
+        transplant($b, $z, $z->right);
+    } elsif (!(defined $z->right)) {
+        transplant($b, $z, $z->left);
+    } else {
+        my $y = tree_minimum($z->right);
+        if ($y->p != $z) {
+            transplant($b, $y, $y->right);
+            $y->right($z->right);
+            $y->right->p($y);
+        }
+        transplant($b, $z, $y);
+        $y->left($z->left);
+        $y->left->p($y);
     }
-    $y->p(undef);
-    $y->left(undef);
-    $y->right(undef);
-    $y;
 }
 

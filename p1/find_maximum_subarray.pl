@@ -40,7 +40,7 @@ sub find_max_crossing_subarray {
 sub find_maximum_subarray {
     my ($a, $low, $high) = @_;
     if ($low == $high) {
-        return ($low, $high, $a->[$low]);
+        ($low, $high, $a->[$low]);
     } else {
         my $mid = int(($low + $high) / 2);
         my ($left_low, $left_high, $left_sum)
@@ -50,11 +50,11 @@ sub find_maximum_subarray {
         my ($cross_low, $cross_high, $cross_sum)
             = find_max_crossing_subarray($a, $low, $mid, $high);
         if ($left_sum >= $right_sum && $left_sum >= $cross_sum) {
-            return ($left_low, $left_high, $left_sum);
+            ($left_low, $left_high, $left_sum);
         } elsif ($right_sum >= $left_sum && $right_sum >= $cross_sum) {
-            return ($right_low, $right_high, $right_sum);
+            ($right_low, $right_high, $right_sum);
         } else {
-            return ($cross_low, $cross_high, $cross_sum);
+            ($cross_low, $cross_high, $cross_sum);
         }
     }
 }
