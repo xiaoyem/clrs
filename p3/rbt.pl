@@ -185,24 +185,60 @@ sub rb_delete_fixup {
     $x->color('B');
 }
 
+#sub rb_delete {
+#    my ($r, $z) = @_;
+#    my ($x, $y);
+#    $z->left == $dummy || $z->right == $dummy ? $y = $z :
+#        ($y = tree_successor($z));
+#    $y->left != $dummy ? $x = $y->left : ($x = $y->right);
+#    $x->p($y->p);
+#    $y->p == $dummy ? $r->root($x) : ($y == $y->p->left ? $y->p->left($x) :
+#        $y->p->right($x));
+#    if ($y != $z) {
+#        my $tmp = $y->key;
+#        $y->key($z->key);
+#        $z->key($tmp);
+#    }
+#    rb_delete_fixup($r, $x) if $y->color eq 'B';
+#    $y->p(undef);
+#    $y->left(undef);
+#    $y->right(undef);
+#    $y;
+#}
+
+sub rb_transplant {
+     my ($r, $u, $v) = @_;
+    $u->p == $dummy ? $r->root($v) : ($u == $u->p->left ? $u->p->left($v) :
+        $u->p->right($v));
+    $v->p($u->p);
+}
+
 sub rb_delete {
     my ($r, $z) = @_;
-    my ($x, $y);
-    $z->left == $dummy || $z->right == $dummy ? $y = $z :
-        ($y = tree_successor($z));
-    $y->left != $dummy ? $x = $y->left : ($x = $y->right);
-    $x->p($y->p);
-    $y->p == $dummy ? $r->root($x) : ($y == $y->p->left ? $y->p->left($x) :
-        $y->p->right($x));
-    if ($y != $z) {
-        my $tmp = $y->key;
-        $y->key($z->key);
-        $z->key($tmp);
+    my $x;
+    my ($y, $yoc) = ($z, $y->color);
+    if ($z->left == $dummy) {
+        $x = $z->right;
+        rb_transplant($r, $z, $z->right);
+    } elsif ($z->right == $dummy) {
+        $x = $z->left;
+        rb_transplant($r, $z, $z->left);
+    } else {
+        $y = tree_minimum($z->right);
+        $yoc = $y->color;
+        $x = $y->right;
+        if ($y->p == $z) {
+            $x->p = $y;
+        } else {
+            rb_transplant($r, $y, $y->right);
+            $y->right = $z->right;
+            $y->right->p = $y;
+        }
+        rb_transplant($r, $z, $y);
+        $y->left = $z->left;
+        $y->left->p = $y;
+        $y->color = $z->color;
     }
     rb_delete_fixup($r, $x) if $y->color eq 'B';
-    $y->p(undef);
-    $y->left(undef);
-    $y->right(undef);
-    $y;
 }
 
