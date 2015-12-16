@@ -15,28 +15,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-sub print_cut_rod_solution {
-    my ($s, $n) = @_;
-    while ($n > 0) {
-        print $s->[$n], "\n";
-        $n -= $s->[$n];
-    }
-}
+do "p4/cut_rod.pl";
 
-sub extended_bottom_up_cut_rod {
-    my ($p, $n) = @_;
-    my (@r, @s);
-    $r[0] = 0;
-    for my $i (1..$n) {
-        my $q = 0;
-        for my $j (1..$i) {
-            if ($q < $p->[$j - 1] + $r[$i - $j]) {
-                $q = $p->[$j - 1] + $r[$i - $j];
-                $s[$i] = $j;
-            }
-        }
-        $r[$i] = $q;
-    }
-    print_cut_rod_solution(\@s, $n);
-}
+my @p = (1, 5, 8, 9, 10, 17, 17, 20, 24, 30);
+extended_bottom_up_cut_rod(\@p, 10);
+extended_bottom_up_cut_rod(\@p, 7);
 

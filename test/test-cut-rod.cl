@@ -15,22 +15,9 @@
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;
 
-(defun print-cut-rod-solution (s n)
-  (do ()
-      ((<= n 0))
-    (format t "~A~%" (aref s n))
-    (setf n (- n (aref s n)))))
+(load "p4/cut-rod.cl")
 
-(defun extended-bottom-up-cut-rod (p n)
-  (let ((r (make-array (+ n 1)))
-        (s (make-array (+ n 1))))
-    (setf (aref r 0) 0)
-    (do ((i 1 (+ i 1)))
-        ((> i n) (print-cut-rod-solution s n))
-      (let ((q 0))
-        (do ((j 1 (+ j 1)))
-            ((> j i) (setf (aref r i) q))
-          (when (< q (+ (aref p (- j 1)) (aref r (- i j))))
-            (setf q (+ (aref p (- j 1)) (aref r (- i j))))
-            (setf (aref s i) j)))))))
+(let ((p (make-array 10 :initial-contents '(1 5 8 9 10 17 17 20 24 30))))
+  (extended-bottom-up-cut-rod p 10)
+  (extended-bottom-up-cut-rod p 7))
 
