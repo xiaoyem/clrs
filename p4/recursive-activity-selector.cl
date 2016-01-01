@@ -1,5 +1,5 @@
 ;
-; Copyright (c) 2005-2015 by Xiaoye Meng.
+; Copyright (c) 2005-2016 by Xiaoye Meng.
 ;
 ; This program is free software: you can redistribute it and/or modify
 ; it under the terms of the GNU General Public License as published by
@@ -18,9 +18,9 @@
 (defun recursive-activity-selector (s f i j)
   (let ((m (+ i 1)))
     (do ()
-        ((or (>= m j) (>= (svref s m) (svref f i))))
+        ((or (> m j) (>= (svref s m) (svref f i))))
       (incf m))
-    (if (< m j)
+    (if (<= m j)
         (cons (format nil "a~A" m) (recursive-activity-selector s f m j))
         nil)))
 

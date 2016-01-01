@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2005-2015 by Xiaoye Meng.
+# Copyright (c) 2005-2016 by Xiaoye Meng.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 
 sub greedy_activity_selector {
     my ($s, $f) = @_;
-    my ($i, @a) = (1, ("a0"));
+    my ($i, @a) = (0);
     for my $m (1..$#$s) {
         if ($s->[$m] >= $f->[$i]) {
             push @a, "a" . $m;

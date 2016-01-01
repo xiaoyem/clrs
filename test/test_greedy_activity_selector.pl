@@ -15,9 +15,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-do "p2/counting_sort.pl";
+do "p4/greedy_activity_selector.pl";
 
-my (@a, @b) = (2, 5, 3, 0, 2, 3, 0, 3);
-counting_sort(\@a, \@b, 5);
-print @b, "\n";
+my @s = (0, 1, 3, 0, 5, 3, 5, 6, 8, 8, 2, 12);
+my @f = (0, 4, 5, 6, 7, 9, 9, 10, 11, 12, 14, 16);
+print greedy_activity_selector(\@s, \@f), "\n";
 

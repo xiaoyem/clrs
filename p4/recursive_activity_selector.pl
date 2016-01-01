@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2005-2015 by Xiaoye Meng.
+# Copyright (c) 2005-2016 by Xiaoye Meng.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
 sub recursive_activity_selector {
     my ($s, $f, $i, $j) = @_;
     my $m = $i + 1;
-    $m += 1 while $m < $j && $s->[$m] < $f->[$i];
-    $m < $j ? ("a" . $m, recursive_activity_selector($s, $f, $m, $j)) : undef;
+    $m += 1 while $m <= $j && $s->[$m] < $f->[$i];
+    $m <= $j ? ("a" . $m, recursive_activity_selector($s, $f, $m, $j)) : undef;
 }
 

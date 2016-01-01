@@ -15,22 +15,9 @@
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;
 
-(defun print-cut-rod-solution (s n)
-  (do ()
-      ((<= n 0))
-    (format t "~A~%" (aref s n))
-    (setf n (- n (aref s n)))))
+(load "p4/greedy-activity-selector.cl")
 
-(defun extended-bottom-up-cut-rod (p n)
-  (let ((r (make-array (+ n 1)))
-        (s (make-array (+ n 1))))
-    (setf (aref r 0) 0)
-    (do ((i 1 (+ i 1)))
-        ((> i n) (print-cut-rod-solution s n))
-      (let ((q 0))
-        (do ((j 1 (+ j 1)))
-            ((> j i) (setf (aref r i) q))
-          (when (< q (+ (aref p (- j 1)) (aref r (- i j))))
-            (setf q (+ (aref p (- j 1)) (aref r (- i j))))
-            (setf (aref s i) j)))))))
+(let ((s (make-array 12 :initial-contents '(0 1 3 0 5 3 5 6 8 8 2 12)))
+      (f (make-array 12 :initial-contents '(0 4 5 6 7 9 9 10 11 12 14 16))))
+  (format t "~A~%" (greedy-activity-selector s f)))
 

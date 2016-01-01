@@ -1,5 +1,5 @@
 ;
-; Copyright (c) 2005-2015 by Xiaoye Meng.
+; Copyright (c) 2005-2016 by Xiaoye Meng.
 ;
 ; This program is free software: you can redistribute it and/or modify
 ; it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
 (defun greedy-activity-selector (s f)
   (let ((n (length s))
         (i 0)
-        (a '("a0")))
+        (a))
     (do ((m 1 (+ m 1)))
         ((>= m n) (nreverse a))
       (when (>= (svref s m) (svref f i))
