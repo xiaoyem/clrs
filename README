@@ -1,10 +1,11 @@
 
-CLRS, the Bible in Lisp and Perl languages
+CLRS, the Bible in Lisp, Perl and Go languages
 
-Codes were written ten years ago.  They are ideal for a 'learn-by-doing' person
-self-studying the CLRS.
+Most Lisp and Perl Codes were written ten years ago.  They are ideal for a
+'learn-by-doing' person self-studying the CLRS.
 
 To run test scripts, type like this:
 	sbcl --script test/test-insertion-sort.cl
 	perl test/test_insertion_sort.pl
+	go run test/test_insertion_sort.go
 
