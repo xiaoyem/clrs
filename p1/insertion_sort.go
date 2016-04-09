@@ -20,7 +20,7 @@ package p1
 func InsertionSort(a []int) {
     n := len(a)
     for i := 1; i < n; i++ {
-        key, j := a[i], i - 1
+        j, key := i - 1, a[i]
         for j >= 0 && a[j] > key {
             a[j + 1] = a[j]
             j--
@@ -28,4 +28,8 @@ func InsertionSort(a []int) {
         a[j + 1] = key
     }
 }
+
+// Loop invariant: at the start of each iteration of the for loop, the subarray
+// a[0..i - 1] consists of the elements originally in a[0..i - 1], but in sorted
+// order.
 
