@@ -15,16 +15,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-def insertion_sort(a) :
-    n = len(a)
-    for i in range(1, n) :
-        j, key = i - 1, a[i];
-        while j >= 0 and a[j] > key :
-            a[j + 1] = a[j]
-            j -= 1
-        a[j + 1] = key
+from os import sys, path
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+from p1.merge_sort import merge_sort
 
-# Loop invariant: at the start of each iteration of the for loop, the subarray
-# a[0..i - 1] consists of the elements originally in a[0..i - 1], but in sorted
-# order.
+a = [2, 4, 5, 7, 1, 2, 3, 6]
+merge_sort(a, 0, len(a) - 1)
+print(a)
 
