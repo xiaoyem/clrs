@@ -15,6 +15,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+def merge_sort(a, p, r) :
+    if p < r :
+        q = int((p + r) / 2)
+        merge_sort(a, p, q)
+        merge_sort(a, q + 1, r)
+        merge(a, p, q, r)
+
 def merge(a, p, q, r) :
     n1, n2, a1, a2, i, j = q - p + 1, r - q, a[p:q + 1], a[q + 1:r + 1], 0, 0
     for k in range(p, r + 1) :
@@ -25,13 +32,6 @@ def merge(a, p, q, r) :
             else :
                 a[k] = a2[j]
                 j += 1
-
-def merge_sort(a, p, r) :
-    if p < r :
-        q = int((p + r) / 2)
-        merge_sort(a, p, q)
-        merge_sort(a, q + 1, r)
-        merge(a, p, q, r)
 
 # Loop invariant: at the start of each iteration of the for loop, the subarray
 # a[p..k - 1] contains the k - p smallest elements of a1[0..n1 - 1] and
