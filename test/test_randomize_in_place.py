@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
-#Author : ZhaoYuchao
-#2016-04-11 18:38:59
+
 #
 # Copyright (c) 2016 by Zhao Yuchao.
 #
