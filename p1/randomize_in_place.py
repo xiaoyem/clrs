@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
-#Author : ZhaoYuchao
-#2016-04-11 18:18:55
 #
 # Copyright (c) 2016 by Zhao Yuchao.
 #
@@ -20,7 +16,7 @@
 import random
 def random_in_place(a) :
     for i in range(len(a)) :
-        j=random.randint(0,len(a)-1)
+        j=random.randint( i , len(a) - 1 )
         a[i] , a[j]=a[j] , a[i]
     return a
 
