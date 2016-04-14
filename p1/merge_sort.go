@@ -27,16 +27,9 @@ func MergeSort(a []int, p, r int) {
 }
 
 func merge(a []int, p, q, r int) {
-    n1 := q - p + 1
-    n2 := r - q
-    a1 := make([]int, n1 + 1)
-    a2 := make([]int, n2 + 1)
-    for i := 0; i < n1; i++ {
-        a1[i] = a[p + i]
-    }
-    for i := 0; i < n2; i++ {
-        a2[i] = a[q + i + 1]
-    }
+    n1, n2 := q - p + 1, r - q
+    a1 := append([]int{}, a[p:q + 1]...)
+    a2 := append([]int{}, a[q + 1:r + 1]...)
     i, j := 0, 0
     for k := p; k <= r; k++ {
         if i < n1 {
