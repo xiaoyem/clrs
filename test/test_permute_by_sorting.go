@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2005-2016 by Qiang Meng.
+// Copyright (c) 2016 by Qiang Meng.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@ import (
 )
 
 func main() {
-    a := []int{5, 2, 4, 7, 1, 3, 2, 6}
-    MergeSort(a, 0, len(a) - 1)
-    fmt.Println(a)
+    ar := []int{1, 2, 3, 4}
+    fmt.Println(PermuteBySorting(ar))
 }
