@@ -41,7 +41,6 @@ func PermuteBySorting(ar []int) []int {
         } else {
             m[key] = ar[i]
         }
-
     }
     ms := make(MapSorter, 0, len(m))
     for k, v := range m {
