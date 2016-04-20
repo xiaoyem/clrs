@@ -27,9 +27,10 @@ func MergeSort(a []int, p, r int) {
 }
 
 func merge(a []int, p, q, r int) {
-    n1, n2, i, j := q - p + 1, r - q, 0, 0
+    n1, n2 := q - p + 1, r - q
     a1 := append([]int{}, a[p:q + 1]...)
     a2 := append([]int{}, a[q + 1:r + 1]...)
+    i, j := 0, 0
     for k := p; k <= r; k++ {
         if i < n1 {
             if j >= n2 || a1[i] <= a2[j] {
@@ -42,3 +43,9 @@ func merge(a []int, p, q, r int) {
         }
     }
 }
+
+// Loop invariant: at the start of each iteration of the for loop, the subarray
+// a[p..k - 1] contains the k - p smallest elements of a1[0..n1 - 1] and
+// a2[0..n2 - 1], in sorted order. Moreover, a1[i] and a2[j] are the smallest
+// elements of their arrays that have not been copied back into a.
+

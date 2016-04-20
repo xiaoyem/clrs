@@ -18,11 +18,12 @@
 package main
 
 import (
-    . "../p1"
     "fmt"
+    . "../p1"
 )
 
 func main() {
-    ar := []int{1, 2, 3, 4}
-    fmt.Println(PermuteBySorting(ar))
+    a := []int{1, 2, 3, 4}
+    fmt.Println(PermuteBySorting(a))
 }
+

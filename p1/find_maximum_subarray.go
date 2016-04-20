@@ -22,7 +22,7 @@ func FindMaximumSubarray(a []int, low, high int) (int, int, int) {
         return low, high, a[low]
     } else {
         mid := (low + high) / 2
-        left_low, left_high, left_sum := FindMaximumSubarray(a, low, mid)
+        left_low, left_high, left_sum    := FindMaximumSubarray(a, low, mid)
         right_low, right_high, right_sum := FindMaximumSubarray(a, mid + 1, high)
         cross_low, cross_high, cross_sum := FindMaxCrossingSubarray(a, low, mid, high)
         if left_sum >= right_sum && left_sum >= cross_sum {

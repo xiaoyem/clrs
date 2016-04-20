@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2005-2016 by Qiang Meng.
+// Copyright (c) 2016 by Qiang Meng.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@
 package main
 
 import (
-    . "../p1"
     "fmt"
+    . "../p1"
 )
 
 func main() {
@@ -27,3 +27,4 @@ func main() {
     MergeSort(a, 0, len(a) - 1)
     fmt.Println(a)
 }
+

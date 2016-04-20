@@ -18,8 +18,8 @@
 package main
 
 import (
-    . "../p1"
     "fmt"
+    . "../p1"
 )
 
 func main() {

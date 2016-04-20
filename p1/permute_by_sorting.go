@@ -18,10 +18,12 @@
 package p1
 
 import (
-    "sort"
     "math"
     "math/rand"
+    "sort"
+    "time"
 )
+
 type MapSorter []Item
 
 type Item struct {
@@ -30,12 +32,10 @@ type Item struct {
 }
 
 func PermuteBySorting(ar []int) []int {
-    n := len(ar)
-    m := map[int]int{}
-    br := []int{}
-
+    n, br, m := len(ar), []int{}, map[int]int{}
     for i := 0; i < n; i++ {
-        key := rand.Intn(int(math.Pow(float64(n), 3))) + 1
+        r := rand.New(rand.NewSource(time.Now().UnixNano()))
+        key := r.Intn(int(math.Pow(float64(n), 3))) + 1
         if _, ok := m[key]; ok {
             i--
         } else {
@@ -64,3 +64,4 @@ func (ms MapSorter) Less(i, j int) bool {
 func (ms MapSorter) Swap(i, j int) {
     ms[i], ms[j] = ms[j], ms[i]
 }
+
