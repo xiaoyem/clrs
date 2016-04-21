@@ -39,7 +39,7 @@ func partition(a []int, p, r int) int {
     return i + 1
 }
 
-func randomizedPartition(a []int, p, r int) int {
+func RandomizedPartition(a []int, p, r int) int {
     i := rand.Intn(r - p + 1) + p
     a[r], a[i] = a[i], a[r]
     return partition(a, p, r)
@@ -47,7 +47,7 @@ func randomizedPartition(a []int, p, r int) int {
 
 func RandomizedQuicksort(a []int, p, r int) {
     if p < r {
-        q := randomizedPartition(a, p, r)
+        q := RandomizedPartition(a, p, r)
         RandomizedQuicksort(a, p, q - 1)
         RandomizedQuicksort(a, q + 1, r)
     }
