@@ -21,6 +21,6 @@
 from os import sys, path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 from p1.find_maximum_subarray import find_maximum_subarray
-a=[-13, -3, -25, -20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
+a = [-13, -3, -25, -20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
 print(find_maximum_subarray(a, 0, 16))
 
