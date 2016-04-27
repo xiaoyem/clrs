@@ -19,7 +19,10 @@ import operator
 def permute_by_sorting(a) :
     p=[]
     for i in range(len(a)) :
-         p.append( random.randint(1 , pow(len(a) , 3)))
+        ptem = random.randint(1, pow(len(a), 3))
+        while  ptem in p :
+            ptem = random.randint(1, pow(len(a), 3))
+        p.append(ptem)
     link = sorted(zip(a , p) , key=operator.itemgetter(1))
     randa = map(operator.itemgetter(0) , link)
     return randa
