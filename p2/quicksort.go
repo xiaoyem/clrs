@@ -45,11 +45,11 @@ func RandomizedPartition(a []int, p, r int) int {
     return partition(a, p, r)
 }
 
-func RandomizedQuicksort(a []int, p, r int) {
+func randomizedQuicksort(a []int, p, r int) {
     if p < r {
         q := RandomizedPartition(a, p, r)
-        RandomizedQuicksort(a, p, q - 1)
-        RandomizedQuicksort(a, q + 1, r)
+        randomizedQuicksort(a, p, q - 1)
+        randomizedQuicksort(a, q + 1, r)
     }
 }
 

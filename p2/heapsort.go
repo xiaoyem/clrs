@@ -18,14 +18,9 @@
 package p2
 
 import (
-    "fmt"
-    "math"
     "errors"
+    "math"
 )
-
-func parent(i int) int { return (i - 1) / 2 }
-func left(i int) int { return i * 2 + 1 }
-func right(i int) int { return i * 2 + 2 }
 
 func HeapSort(a []int) {
     buildMaxHeap(a)
@@ -34,6 +29,10 @@ func HeapSort(a []int) {
         maxHeapify(a, 0, i - 1)
     }
 }
+
+func parent(i int) int { return (i - 1) / 2 }
+func left  (i int) int { return i * 2 + 1 }
+func right (i int) int { return i * 2 + 2 }
 
 func maxHeapify(a []int, i, z int) {
     l, r, largest := left(i), right(i), i
@@ -50,49 +49,43 @@ func maxHeapify(a []int, i, z int) {
 }
 
 func buildMaxHeap(a []int) {
-    for i := ((len(a) - 1) / 2) - 1; i >= 0; i-- {
+    for i := ((len(a) - 2) / 2); i >= 0; i-- {
         maxHeapify(a, i, len(a) - 1)
     }
 }
 
-func HeapMaximum(a []int) int { return a[0] }
+func heapMaximum(a []int) int { return a[0] }
 
-func HeapExtractMax(a []int) (int, []int) {
-    n := len(a)
-    if len(a) < 1 {
-        err := errors.New("heap underflow")
-        if err != nil {
-            fmt.Println(err)
-        }
+func heapExtractMax(a *[]int) (int, error) {
+    n := len(*a)
+    if n < 1 {
+        return -1, errors.New("heap underflow")
     }
-    max := a[0]
-    a[0] = a[n - 1]
-    a = a[:n - 1]
-    maxHeapify(a, 0, n - 2)
-    return max, a
+    max := (*a)[0]
+    (*a)[0] = (*a)[n - 1]
+    *a = (*a)[:n - 1]
+    maxHeapify(*a, 0, n - 2)
+    return max, nil
 }
 
-func HeapIncreaseKey(a []int, i, key int) {
+func heapIncreaseKey(a []int, i, key int) error {
     if key < a[i] {
-        err := errors.New("new key is smaller than current key")
-        if err != nil {
-            fmt.Println(err)
-        }
+        return errors.New("new key is smaller than current key")
     }
     a[i] = key
     for i > 0 && a[parent(i)] < a[i] {
         a[i], a[parent(i)] = a[parent(i)], a[i]
         i = parent(i)
     }
+    return nil
 }
 
-func MaxHeapInsert(a []int, key int) []int {
-    if len(a) == 0 {
-        a = append(a, key)
+func maxHeapInsert(a *[]int, key int) {
+    if len(*a) == 0 {
+        *a = append(*a, key)
     } else {
-        a = append(a, int(math.Min(float64(a[parent(len(a) + 0)]), float64(key))))
-        HeapIncreaseKey(a, len(a) - 1, key)
+        *a = append(*a, int(math.Min(float64((*a)[parent(len(*a))]), float64(key))))
+        heapIncreaseKey(*a, len(*a) - 1, key)
     }
-    return a
 }
 
