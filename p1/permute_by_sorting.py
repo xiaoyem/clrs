@@ -1,4 +1,3 @@
-#coding:utf-8
 #
 # Copyright (c) 2016 by Zhao Yuchao.
 #
@@ -12,20 +11,21 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# You should have received a copy of the GNU General Public License 
+# You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
 import random
 import operator
-def permute_by_sorting(a) :
-    p=[]
-    for i in range(len(a)) :
-        ptem = random.randint(1, pow(len(a), 3))
-        while  ptem in p :
-            ptem = random.randint(1, pow(len(a), 3))
+
+def permute_by_sorting(ar) :
+    n, p = len(ar), []
+    for i in range(n) :
+        ptem = random.randint(1, pow(n, 3) - 1)
+        while ptem in p :
+            ptem = random.randint(1, pow(n, 3) - 1)
         p.append(ptem)
-    link = sorted(zip(a , p) , key=operator.itemgetter(1))
-    randa = map(operator.itemgetter(0) , link)
-    return randa
-
-
+    link = sorted(zip(p, ar), key = operator.itemgetter(0))
+    br = map(operator.itemgetter(1), link)
+    return br
 

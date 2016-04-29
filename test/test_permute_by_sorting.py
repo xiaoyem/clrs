@@ -1,4 +1,3 @@
-
 #
 # Copyright (c) 2016 by Zhao Yuchao.
 #
@@ -15,12 +14,11 @@
 # You should have received a copy of the GNU General Public License 
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# -*- coding:utf-8 -*-
 
-
-m os import sys, path
+from os import sys, path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 from p1.permute_by_sorting import permute_by_sorting
 
-a = [1,2,3,4,5,6,7,8,9]
+a = [1, 2, 3, 4]
 print(permute_by_sorting(a))
+

@@ -1,4 +1,3 @@
-
 #
 # Copyright (c) 2016 by Zhao Yuchao.
 #
@@ -12,15 +11,14 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# You should have received a copy of the GNU General Public License 
+# You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# -*- coding:utf-8 -*-
-
 
 from os import sys, path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 from p1.find_maximum_subarray import find_maximum_subarray
+
 a = [-13, -3, -25, -20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
 print(find_maximum_subarray(a, 0, 16))
 
