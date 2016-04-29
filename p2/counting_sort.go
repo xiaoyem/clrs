@@ -18,7 +18,7 @@
 package p2
 
 func CountingSort(a []int, b []int, k int) {
-    c := make([]int, k + 1) //value default 0
+    c := make([]int, k + 1) // value default 0
     for i := range a {
         c[a[i]]++
     }

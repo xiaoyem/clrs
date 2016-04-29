@@ -29,15 +29,15 @@ type Item struct {
     Val  int
 }
 
-func RadixSort(ar []int, d int) {
+func RadixSort(a []int, d int) {
     for i := d - 1; i >= 0; i-- {
-        h := make(H, 0, len(ar))
-        for index, value := range ar {
-            h = append(h, Item{strconv.Itoa(value)[i:i + 1], ar[index]})
+        h := make(H, 0, len(a))
+        for index, value := range a {
+            h = append(h, Item{strconv.Itoa(value)[i:i + 1], a[index]})
         }
         sort.Sort(h)
-        for i, item := range h {
-            ar[i] = item.Val
+        for index, item := range h {
+            a[index] = item.Val
         }
     }
 }

@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2016 by Zhao Yuchao.
+# Copyright (c) 2016 by Yuchao Zhao.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,10 +15,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-import random
-import operator
+import operator, random
 
 def permute_by_sorting(ar) :
+    # FIXME
     n, p = len(ar), []
     for i in range(n) :
         ptem = random.randint(1, pow(n, 3) - 1)

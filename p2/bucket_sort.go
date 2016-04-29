@@ -21,17 +21,17 @@ type BucketArray [][]float64
 
 func Bucket_sort(a *[]float64) {
     n := len(*a)
-    B := make(BucketArray, n)
+    b := make(BucketArray, n)
     for i := range *a {
-        B[int(float64(n) * (*a)[i])] = append(B[int(float64(n) * (*a)[i])], (*a)[i])
+        b[int(float64(n) * (*a)[i])] = append(b[int(float64(n) * (*a)[i])], (*a)[i])
     }
-    for i := range B {
-        insertionSort(B[i])
+    for i := range b {
+        insertionSort(b[i])
     }
     *a = nil
-    for i := range B {
-        if len(B[i]) > 0 {
-            *a = append(*a, B[i]...)
+    for i := range b {
+        if len(b[i]) > 0 {
+            *a = append(*a, b[i]...)
         }
     }
 }

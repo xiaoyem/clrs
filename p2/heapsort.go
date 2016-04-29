@@ -49,7 +49,7 @@ func maxHeapify(a []int, i, z int) {
 }
 
 func buildMaxHeap(a []int) {
-    for i := ((len(a) - 2) / 2); i >= 0; i-- {
+    for i := (len(a) - 2) / 2; i >= 0; i-- {
         maxHeapify(a, i, len(a) - 1)
     }
 }
