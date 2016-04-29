@@ -24,7 +24,7 @@ import (
 
 func main() {
     a := []float64 {.78, .17, .39, .26, .72, .94, .21, .12, .23, .68}
-    Bucket_sort(&a)
+    BucketSort(&a)
     fmt.Println(a)
 }
 

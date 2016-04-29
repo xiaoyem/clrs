@@ -19,7 +19,7 @@ package p2
 
 type BucketArray [][]float64
 
-func Bucket_sort(a *[]float64) {
+func BucketSort(a *[]float64) {
     n := len(*a)
     b := make(BucketArray, n)
     for i := range *a {
