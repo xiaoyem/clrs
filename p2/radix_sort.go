@@ -22,7 +22,7 @@ import (
     "strconv"
 )
 
-type MapSorter []Item
+type H []Item
 
 type Item struct {
     Key  string
@@ -31,7 +31,7 @@ type Item struct {
 
 func RadixSort(ar []int, d int) {
     for i := d - 1; i >= 0; i-- {
-        h := make(MapSorter, 0, len(ar))
+        h := make(H, 0, len(ar))
         for index, value := range ar {
             h = append(h, Item{strconv.Itoa(value)[i:i + 1], ar[index]})
         }
@@ -42,15 +42,15 @@ func RadixSort(ar []int, d int) {
     }
 }
 
-func (h MapSorter) Len() int {
+func (h H) Len() int {
     return len(h)
 }
 
-func (h MapSorter) Less(i, j int) bool {
+func (h H) Less(i, j int) bool {
     return h[i].Key < h[j].Key
 }
 
-func (h MapSorter) Swap(i, j int) {
+func (h H) Swap(i, j int) {
     h[i], h[j] = h[j], h[i]
 }
 

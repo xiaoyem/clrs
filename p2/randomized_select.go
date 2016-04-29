@@ -17,11 +17,6 @@
 
 package p2
 
-import (
-    "math/rand"
-    . "p2"
-)
-
 func RandomizedSelect(a []int, p, r, i int) int {
     if p == r {
         return a[p]

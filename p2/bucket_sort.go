@@ -17,17 +17,34 @@
 
 package p2
 
-func CountingSort(a []int, b []int, k int) {
-    c := make([]int, k + 1) //value default 0
-    for i := range a {
-        c[a[i]]++
+type BucketArray [][]float64
+
+func Bucket_sort(a *[]float64) {
+    n := len(*a)
+    B := make(BucketArray, n)
+    for i := range *a {
+        B[int(float64(n) * (*a)[i])] = append(B[int(float64(n) * (*a)[i])], (*a)[i])
     }
-    for i := 1; i <= k; i++ {
-        c[i] += c[i - 1]
+    for i := range B {
+        insertionSort(B[i])
     }
-    for i := len(a) - 1; i >= 0; i-- {
-        b[c[a[i]] - 1] = a[i]
-        c[a[i]]--
+    *a = nil
+    for i := range B {
+        if len(B[i]) > 0 {
+            *a = append(*a, B[i]...)
+        }
+    }
+}
+
+func insertionSort(a []float64) {
+    n := len(a)
+    for i := 1; i < n; i++ {
+        j, key := i - 1, a[i]
+        for j >= 0 && a[j] > key {
+            a[j + 1] = a[j]
+            j--
+        }
+        a[j + 1] = key
     }
 }
 
