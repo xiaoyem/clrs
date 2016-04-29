@@ -23,8 +23,8 @@ import (
 )
 
 func main() {
-    a := []int {4, 1, 3, 2, 16, 9, 10, 14, 8, 7}
+    a := []int{4, 1, 3, 2, 16, 9, 10, 14, 8, 7}
     HeapSort(a)
-    fmt.Println("HeapSort:", a)
+    fmt.Println(a)
 }
 

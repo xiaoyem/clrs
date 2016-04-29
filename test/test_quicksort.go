@@ -23,7 +23,7 @@ import (
 )
 
 func main() {
-    a := []int {2, 8, 7, 1, 3, 5, 6, 4}
+    a := []int{2, 8, 7, 1, 3, 5, 6, 4}
     Quicksort(a, 0, len(a) - 1)
     fmt.Println(a)
 }
