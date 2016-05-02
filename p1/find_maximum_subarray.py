@@ -31,15 +31,15 @@ def find_maximum_subarray(a, low, high) :
             return (cross_low, cross_high, cross_sum)
 
 def find_max_crossing_subarray(a, low, mid, high) :
-    left_sum, max_left, right_sum, max_right, sum = -float("inf"), mid, -float("inf"), mid + 1, 0
+    left_sum, max_left, right_sum, max_right, sum = a[mid], mid, a[mid + 1], mid + 1, 0
     for i in range(mid, low, -1) :
-        sum = sum + a[i]
+        sum += a[i]
         if sum > left_sum :
             left_sum = sum
             max_left = i
     sum = 0
     for j in range(mid + 1, high) :
-        sum = sum + a[j]
+        sum += a[j]
         if sum > right_sum :
             right_sum = sum
             max_right = j
