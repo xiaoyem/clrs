@@ -17,9 +17,16 @@
 #
 # -*- coding:utf-8 -*-
 
+def left(i) :
+    return 2 * i + 1
+def right(i) :
+    return 2 * i + 2
+def parent(i) :
+    return int((i - 1) / 2)
+
 def max_heapify(a, i, aheapsize) :
-    l = 2 * i + 1
-    r =2 * i + 2
+    l = left(i)
+    r = right(i)
     if l <= aheapsize and a[l] > a[i] :
         largest = l
     else :
@@ -43,5 +50,27 @@ def heapsort(a) :
         aheapsize = aheapsize - 1
         max_heapify(a, 0, aheapsize - 1 )
         
+def heap_maximum(a) :
+    return a[0]
 
+def heap_extract_max(a) :
+    aheapsize = len(a)
+    if aheapsize < 1:
+        print"error: heap underflow"
+    maxnum = a[0]
+    a[0] = a[len(a) - 1]
+    aheapsize -= 1
+    max_heapify(a, 1, aheapsize)
+    return maxnum
 
+def heap_increase_key(a, i, key) :
+    if key < a[i] :
+        print "error: new key is smaller than current key"
+    a[i] = key
+    while i > 0 and a[parent(i)] < a[i] :
+        a[i], a[parent(i)] = a[parent(i)], a[i]
+        i = parent(i)
+
+def max_heap_insert(a, key) :
+    a.append(-float("inf"))
+    heap_increase_key(a, len(a) - 1, key)
