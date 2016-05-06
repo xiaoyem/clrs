@@ -23,3 +23,10 @@ from p2.heapsort import *
 a = [4, 1, 3, 2, 16, 9, 10, 14, 8, 7]
 heapsort(a)
 print a
+b = [16, 14, 10, 8, 7, 9, 3, 2, 4, 1]
+print(heap_maximum(b))
+print(heap_extract_max(b))
+heap_increase_key(b, 8, 15)
+print b
+max_heap_insert(b, 17)
+print b
