@@ -1,6 +1,5 @@
-
 #
-# Copyright (c) 2016 by Zhao Yuchao.
+# Copyright (c) 2016 by Yuchao Zhao.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -12,10 +11,9 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# You should have received a copy of the GNU General Public License 
+# You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# -*- coding:utf-8 -*-
 
 def stack_empty(s) :
     if len(s) == 0 :
@@ -28,9 +26,7 @@ def push(s, x) :
 
 def pop(s) :
     if stack_empty(s) :
-        print "error : underflow"
+        return "underflow"
     else :
         return(s.pop())
-
-
 

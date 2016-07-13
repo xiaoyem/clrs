@@ -18,13 +18,13 @@
 package p3
 
 type Element struct {
-    Prev  *Element
-    Key    int
-    Next  *Element
+    Prev *Element
+    Key   int
+    Next *Element
 }
 
 type Dlist struct {
-    Head  *Element
+    Head *Element
 }
 
 func listSearch(l *Dlist, k int) Element {

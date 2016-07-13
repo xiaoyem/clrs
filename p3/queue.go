@@ -18,12 +18,12 @@
 package p3
 
 func Enqueue(a *[]int, n int) {
-   *a = append(*a, n)
+    *a = append(*a, n)
 }
 
 func Dequeue(a *[]int) int {
-   top := (*a)[0]
-   *a = (*a)[1:]
-   return top
+    top := (*a)[0]
+    *a = (*a)[1:]
+    return top
 }
 

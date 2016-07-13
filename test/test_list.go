@@ -39,17 +39,17 @@ func main() {
     ListInsert(&l, &c)
     ListInsert(&l, &d)
     for x := l.Head; x != nil; x = x.Next {
-        fmt.Print(x.Key, " ")
+        fmt.Print(x.Key)
     }
     fmt.Print("\n")
     ListInsert(&l, &e)
     for x := l.Head; x != nil; x = x.Next {
-        fmt.Print(x.Key, " ")
+        fmt.Print(x.Key)
     }
     fmt.Print("\n")
     ListDelete(&l, &b)
     for x := l.Head; x != nil; x = x.Next {
-        fmt.Print(x.Key, " ")
+        fmt.Print(x.Key)
     }
     fmt.Print("\n")
 }
