@@ -1,6 +1,5 @@
-
 #
-# Copyright (c) 2016 by Zhao Yuchao.
+# Copyright (c) 2016 by Yuchao Zhao.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -12,26 +11,13 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# You should have received a copy of the GNU General Public License 
+# You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# -*- coding:utf-8 -*-
-import random
 
-def partition(a, p, r) :
-    x = a[r]
-    i = p - 1
-    for j in range(p, r) :
-        if a[j] <= x :
-            i = i + 1
-            a[i], a[j] = a[j], a[i]
-    a[i + 1], a[r] = a[r], a[i + 1]
-    return i + 1
-
-def randomized_partition(a, p, r) :
-    i = random.randint(p, r)
-    a[r], a[i] = a[i], a[r]
-    return partition(a, p, r)
+from os import sys, path
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+from p2.quicksort import *
 
 def randomized_select(a, p, r, i) :
     if p == r :
@@ -44,8 +30,4 @@ def randomized_select(a, p, r, i) :
         return randomized_select(a, p, q - 1, i)
     else :
         return randomized_select(a, q + 1, r, i - k)
-
-
-
-
 

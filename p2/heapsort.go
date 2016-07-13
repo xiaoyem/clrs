@@ -49,8 +49,9 @@ func maxHeapify(a []int, i, z int) {
 }
 
 func buildMaxHeap(a []int) {
-    for i := (len(a) - 2) / 2; i >= 0; i-- {
-        maxHeapify(a, i, len(a) - 1)
+    n := len(a)
+    for i := n / 2 - 1; i >= 0; i-- {
+        maxHeapify(a, i, n - 1)
     }
 }
 
@@ -64,7 +65,7 @@ func heapExtractMax(a *[]int) (int, error) {
     max := (*a)[0]
     (*a)[0] = (*a)[n - 1]
     *a = (*a)[:n - 1]
-    maxHeapify(*a, 0, n - 2)
+    maxHeapify(*a, 0, len(*a) - 1)
     return max, nil
 }
 
@@ -81,11 +82,12 @@ func heapIncreaseKey(a []int, i, key int) error {
 }
 
 func maxHeapInsert(a *[]int, key int) {
-    if len(*a) == 0 {
+    n := len(*a)
+    if n == 0 {
         *a = append(*a, key)
     } else {
-        *a = append(*a, int(math.Min(float64((*a)[parent(len(*a))]), float64(key))))
-        heapIncreaseKey(*a, len(*a) - 1, key)
+        *a = append(*a, int(math.Min(float64((*a)[parent(n)]), float64(key))))
+        heapIncreaseKey(*a, n, key)
     }
 }
 

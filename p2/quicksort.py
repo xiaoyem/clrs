@@ -1,6 +1,5 @@
-
 #
-# Copyright (c) 2016 by Zhao Yuchao.
+# Copyright (c) 2016 by Yuchao Zhao.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -12,11 +11,12 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# You should have received a copy of the GNU General Public License 
+# You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# -*- coding:utf-8 -*-
+
 import random
+
 def quicksort(a, p, r) :
     if p < r :
         q = partition(a, p, r)
@@ -24,11 +24,10 @@ def quicksort(a, p, r) :
         quicksort(a, q + 1, r)
 
 def partition(a, p, r) :
-    x = a[r]
     i = p - 1
-    for j in range(p , r) :
-        if a[j] <= x :
-            i = i + 1
+    for j in range(p, r) :
+        if a[j] <= a[r] :
+            i += 1
             a[i], a[j] = a[j], a[i]
     a[i + 1], a[r] = a[r], a[i + 1]
     return i + 1
@@ -45,9 +44,7 @@ def randomized_quicksort(a, p, r) :
         randomized_quicksort(a, q + 1, r)
 
 def hoare_partition(a, p, r) :
-    x = a[p]
-    i = p
-    j = r
+    i, j, x = p, r, a[p]
     while 1 :
         if a[i] < x :
             i += 1
@@ -58,12 +55,4 @@ def hoare_partition(a, p, r) :
         else :
             break
     return j
-
-def hoare_quicksort(a, p, r) :
-    if p < r :
-        q = hoare_partition(a, p, r)
-        hoare_quicksort(a, p, q - 1)
-        hoare_quicksort(a, q + 1, r)
-
-
 

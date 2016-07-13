@@ -14,31 +14,22 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# -*- coding:utf-8 -*-
 
-def insertion_sort(a) :
-    n = len(a)
-    for i in range(1, n) :
-        j, key = i - 1, a[i];
-        while j >= 0 and a[j] > key :
-            a[j + 1] = a[j]
-            j -= 1
-        a[j + 1] = key
+from os import sys, path
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+from p1.insertion_sort import *
 
 def bucket_sort(a) :
-    n = len(a)
-    b = []
+    n, b = len(a), []
     for i in range(n) :
         b.append([])
     for i in range(n) :
-        b[int(n * a[i])].append(a[i])
+        b[int(a[i] * n)].append(a[i])
     for i in range(n):
         insertion_sort(b[i])
-    c = []
+    del a[:]
     for i in range(n) :
         if len(b[i]) > 0 :
             for j in b[i] :
-                c.append(j)
-    return c
-
+                a.append(j)
 

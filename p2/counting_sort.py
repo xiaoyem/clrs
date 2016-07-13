@@ -1,6 +1,5 @@
-
 #
-# Copyright (c) 2016 by Zhao Yuchao.
+# Copyright (c) 2016 by Yuchao Zhao.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -12,21 +11,17 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# You should have received a copy of the GNU General Public License 
+# You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# -*- coding:utf-8 -*-
 
-def counting_sort(a) :
-    k = max(a)
-    c = [0] * (k + 1)
-    b = [0] * len(a)
-    for j in range(0, len(a)) :
-        c[a[j]] = c[a[j]] + 1
+def counting_sort(a, b, k) :
+    n, c = len(a), [0] * (k + 1)
+    for i in range(n) :
+        c[a[i]] += 1
     for i in range(1, k + 1) :
-        c[i] = c[i] + c[i - 1]
-    for j in range(len(a) - 1, 0, -1 ) :
-        b[c[a[j]] - 1] = a[j]
-        c[a[j]] = c[a[j]] - 1
-    return b
+        c[i] += c[i - 1]
+    for i in range(n - 1, 0, -1) :
+        b[c[a[i]] - 1] = a[i]
+        c[a[i]] -= 1
 
