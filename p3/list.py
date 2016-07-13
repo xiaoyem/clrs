@@ -15,15 +15,18 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+# FIXME
 def list_search(l, k) :
     x = 0
     while l[x] != k :
         x = x + 1
     return x
 
+# FIXME
 def list_insert(l, x) :
     l.insert(0, x)
 
+# FIXME
 def list_remove(l, x) :
     l.remove(x)
 
