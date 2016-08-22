@@ -19,15 +19,15 @@ from os import sys, path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 from p2.quicksort import *
 
-def randomized_select(a, p, r, i) :
-    if p == r :
+def randomized_select(a, p, r, i):
+    if p == r:
         return a[p]
     q = randomized_partition(a, p, r)
     k = q - p + 1
-    if i == k :
+    if i == k:
         return a[q]
-    elif i < k :
+    elif i < k:
         return randomized_select(a, p, q - 1, i)
-    else :
+    else:
         return randomized_select(a, q + 1, r, i - k)
 

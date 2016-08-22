@@ -15,11 +15,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-def insertion_sort(a) :
+def insertion_sort(a):
     n = len(a)
-    for i in range(1, n) :
-        j, key = i - 1, a[i];
-        while j >= 0 and a[j] > key :
+    for i in range(1, n):
+        j, key = i - 1, a[i]
+        while j >= 0 and a[j] > key:
             a[j + 1] = a[j]
             j -= 1
         a[j + 1] = key

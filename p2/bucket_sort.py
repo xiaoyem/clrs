@@ -19,17 +19,17 @@ from os import sys, path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 from p1.insertion_sort import *
 
-def bucket_sort(a) :
+def bucket_sort(a):
     n, b = len(a), []
-    for i in range(n) :
+    for i in range(n):
         b.append([])
-    for i in range(n) :
+    for i in range(n):
         b[int(a[i] * n)].append(a[i])
     for i in range(n):
         insertion_sort(b[i])
     del a[:]
-    for i in range(n) :
-        if len(b[i]) > 0 :
-            for j in b[i] :
+    for i in range(n):
+        if len(b[i]) > 0:
+            for j in b[i]:
                 a.append(j)
 

@@ -17,9 +17,9 @@
 
 import random
 
-def randomize_in_place(a) :
+def randomize_in_place(a):
     n = len(a)
-    for i in range(n) :
+    for i in range(n):
         j = random.randint(i, n - 1)
         a[i], a[j] = a[j], a[i]
 

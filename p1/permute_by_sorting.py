@@ -17,12 +17,12 @@
 
 import operator, random
 
-def permute_by_sorting(ar) :
+def permute_by_sorting(ar):
     # FIXME
     n, p = len(ar), []
-    for i in range(n) :
+    for i in range(n):
         ptem = random.randint(1, pow(n, 3) - 1)
-        while ptem in p :
+        while ptem in p:
             ptem = random.randint(1, pow(n, 3) - 1)
         p.append(ptem)
     link = sorted(zip(p, ar), key = operator.itemgetter(0))

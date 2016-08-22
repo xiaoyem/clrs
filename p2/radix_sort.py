@@ -18,9 +18,9 @@
 import operator
 
 def radix_sort(a, d):
-    for i in range(d) :
+    for i in range(d):
         p = []
-        for j in range(len(a)) :
+        for j in range(len(a)):
             p.append(a[j] / pow(10, i) % 10)
         link = sorted(zip(p, a), key = operator.itemgetter(0))
         a[:] = map(operator.itemgetter(1), link)

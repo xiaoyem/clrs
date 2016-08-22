@@ -15,10 +15,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-def bubblesort(a) :
+def bubblesort(a):
     n = len(a)
-    for i in range(0, n) :
-        for j in range(n - 1, i, -1) :
-            if a[j] < a[j - 1] :
+    for i in range(0, n):
+        for j in range(n - 1, i, -1):
+            if a[j] < a[j - 1]:
                 a[j], a[j - 1] = a[j - 1], a[j]
 

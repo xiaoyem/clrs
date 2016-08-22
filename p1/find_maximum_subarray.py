@@ -15,32 +15,32 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-def find_maximum_subarray(a, low, high) :
-    if high is low :
+def find_maximum_subarray(a, low, high):
+    if high is low:
         return (low, high, a[high - 1])
-    else :
+    else:
         mid = (low + high) / 2
         (left_low, left_high, left_sum)    = find_maximum_subarray(a, low, mid)
         (right_low, right_high, right_sum) = find_maximum_subarray(a, mid + 1, high)
         (cross_low, cross_high, cross_sum) = find_max_crossing_subarray(a, low, mid, high)
-        if left_sum >= right_sum & left_sum >= cross_sum :
+        if left_sum >= right_sum & left_sum >= cross_sum:
             return (left_low, left_high, left_sum)
-        elif right_sum >= left_sum & right_sum >= cross_sum :
+        elif right_sum >= left_sum & right_sum >= cross_sum:
             return (right_low, right_high, right_sum)
-        else :
+        else:
             return (cross_low, cross_high, cross_sum)
 
-def find_max_crossing_subarray(a, low, mid, high) :
+def find_max_crossing_subarray(a, low, mid, high):
     left_sum, max_left, right_sum, max_right, sum = a[mid], mid, a[mid + 1], mid + 1, 0
-    for i in range(mid, low, -1) :
+    for i in range(mid, low, -1):
         sum += a[i]
-        if sum > left_sum :
+        if sum > left_sum:
             left_sum = sum
             max_left = i
     sum = 0
-    for j in range(mid + 1, high) :
+    for j in range(mid + 1, high):
         sum += a[j]
-        if sum > right_sum :
+        if sum > right_sum:
             right_sum = sum
             max_right = j
     return (max_left, max_right, left_sum + right_sum)

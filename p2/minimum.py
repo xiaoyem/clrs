@@ -15,10 +15,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-def minimum(a) :
+def minimum(a):
     x = a[0]
-    for i in range(1, len(a)) :
-        if x > a[i] :
+    for i in range(1, len(a)):
+        if x > a[i]:
             x = a[i]
     return x
 

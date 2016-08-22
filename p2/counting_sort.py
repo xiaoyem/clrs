@@ -15,13 +15,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-def counting_sort(a, b, k) :
+def counting_sort(a, b, k):
     n, c = len(a), [0] * (k + 1)
-    for i in range(n) :
+    for i in range(n):
         c[a[i]] += 1
-    for i in range(1, k + 1) :
+    for i in range(1, k + 1):
         c[i] += c[i - 1]
-    for i in range(n - 1, 0, -1) :
+    for i in range(n - 1, 0, -1):
         b[c[a[i]] - 1] = a[i]
         c[a[i]] -= 1
 
