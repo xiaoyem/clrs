@@ -15,18 +15,17 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-def stack_empty(s) :
-    if len(s) == 0 :
+def stack_empty(s):
+    if len(s) == 0:
         return 1
-    else :
+    else:
         return 0
 
-def push(s, x) :
+def push(s, x):
     s.append(x)
 
-def pop(s) :
-    if stack_empty(s) :
+def pop(s):
+    if stack_empty(s):
         return "underflow"
-    else :
-        return(s.pop())
+    return s.pop()
 

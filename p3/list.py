@@ -15,18 +15,34 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# FIXME
-def list_search(l, k) :
-    x = 0
-    while l[x] != k :
-        x = x + 1
-    return x
+class element(object):
+    def __init__(self, prev = None, key = None, next = None):
+        self.prev = prev
+        self.key  = key
+        self.next = next
 
-# FIXME
-def list_insert(l, x) :
-    l.insert(0, x)
+class dlist(object):
+    def __init__(self, head = None):
+        self.head = head
 
-# FIXME
-def list_remove(l, x) :
-    l.remove(x)
+    def search(self, k):
+        x = self.head
+        while x is not None and x.key != k:
+            x = x.next
+        return x
+
+    def insert(self, x):
+        x.next = self.head
+        if self.head is not None:
+            self.head.prev = x
+        self.head = x
+
+    def remove(self, x):
+        if x.prev is not None:
+            x.prev.next = x.next
+        else:
+            self.head = x.next
+        if x.next is not None:
+            x.next.prev = x.prev
+        x.prev, x.next = None, None
 
